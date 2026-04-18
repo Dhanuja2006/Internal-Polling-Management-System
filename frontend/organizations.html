@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organizations – PollSphere</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <style>
+        .org-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+        .org-card {
+            background: var(--clr-bg-2);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px border var(--clr-border);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+        .org-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.1);
+        }
+        .org-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--clr-text-1);
+        }
+        .org-desc {
+            font-size: 0.875rem;
+            color: var(--clr-text-3);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        .org-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: auto;
+        }
+        .org-role-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 99px;
+            text-transform: uppercase;
+        }
+        .role-admin { background: rgba(99,102,241,0.1); color: #6366f1; }
+        .role-moderator { background: rgba(16,185,129,0.1); color: #10b981; }
+        .role-member { background: rgba(107,114,128,0.1); color: #6b7280; }
+        
+        .invite-code-box {
+            background: var(--clr-bg-3);
+            padding: 12px;
+            border-radius: 8px;
+            margin: 16px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: monospace;
+            font-weight: 600;
+        }
+        
+        .action-bar {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal {
+            background: var(--clr-bg-2);
+            width: 100%;
+            max-width: 450px;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar (Same as dashboard) -->
+    <aside class="sidebar" id="sidebar">
+        <!-- Content will be injected or kept consistent -->
+        <div class="sidebar-brand">
+            <div class="brand-icon small">
+                <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="url(#lg2)"/><path d="M10 28 L10 18 L18 18 L18 28 Z" fill="white" opacity="0.9"/><path d="M19 28 L19 12 L27 12 L27 28 Z" fill="white"/><path d="M28 28 L28 20 L36 20 L36 28 Z" fill="white" opacity="0.7"/><defs><linearGradient id="lg2" x1="0" y1="0" x2="40" y2="40"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs></svg>
+            </div>
+            <span class="sidebar-brand-text">PollSphere</span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <span class="nav-section-label">Main</span>
+            <a href="dashboard.html" class="nav-item">Dashboard</a>
+            <a href="organizations.html" class="nav-item active">Organizations</a>
+            <a href="polls.html" class="nav-item">Active Polls</a>
+            <a href="my-votes.html" class="nav-item">My Votes</a>
+            
+            <span class="nav-section-label admin-only">Admin</span>
+            <a href="admin-polls.html" class="nav-item admin-only">Manage Polls</a>
+            <a href="admin-users.html" class="nav-item admin-only">Manage Users</a>
+        </nav>
+
+        <div class="sidebar-footer" id="sidebar-footer-container">
+            <!-- Injected by common.js -->
+        </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+            </button>
+            <div class="top-bar-title">
+                <h1>My Organizations</h1>
+            </div>
+        </header>
+
+        <div class="page-content">
+            <div class="action-bar">
+                <button class="btn btn-primary" id="btn-open-create">+ Create Organization</button>
+                <button class="btn btn-secondary" id="btn-open-join">Join with Code</button>
+            </div>
+
+            <div class="org-grid" id="org-grid">
+                <div class="skeleton-loader">
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Create Org Modal -->
+    <div class="modal-overlay hidden" id="create-org-modal">
+        <div class="modal">
+            <h2 style="margin-bottom:20px">Create Organization</h2>
+            <div class="form-group">
+                <label>Organization Name</label>
+                <input type="text" id="new-org-name" placeholder="Acme Corp" />
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="new-org-desc" placeholder="Internal communication workspace"></textarea>
+            </div>
+            <div style="display:flex;gap:12px;margin-top:24px">
+                <button class="btn btn-primary" id="create-org-submit">Create</button>
+                <button class="btn btn-secondary modal-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join Org Modal -->
+    <div class="modal-overlay hidden" id="join-org-modal">
+        <div class="modal">
+            <h2 style="margin-bottom:20px">Join Organization</h2>
+            <div class="form-group">
+                <label>Invite Code</label>
+                <input type="text" id="join-invite-code" placeholder="E.g. ABCD-1234" style="text-transform:uppercase" />
+            </div>
+            <div style="display:flex;gap:12px;margin-top:24px">
+                <button class="btn btn-primary" id="join-org-submit">Join</button>
+                <button class="btn btn-secondary modal-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/organizations.js"></script>
+</body>
+</html>

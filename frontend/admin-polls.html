@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Polls – PollSphere Admin</title>
+    <meta name="description" content="Create, edit, activate and delete polls as an administrator." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon small">
+                <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="url(#lg5)"/><path d="M10 28 L10 18 L18 18 L18 28 Z" fill="white" opacity="0.9"/><path d="M19 28 L19 12 L27 12 L27 28 Z" fill="white"/><path d="M28 28 L28 20 L36 20 L36 28 Z" fill="white" opacity="0.7"/><defs><linearGradient id="lg5" x1="0" y1="0" x2="40" y2="40"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs></svg>
+            </div>
+            <span class="sidebar-brand-text">PollSphere</span>
+        </div>
+        <nav class="sidebar-nav">
+            <span class="nav-section-label">Main</span>
+            <a href="dashboard.html" class="nav-item" id="nav-dashboard"><svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>Dashboard</a>
+            <a href="organizations.html" class="nav-item" id="nav-orgs">
+                <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/></svg>
+                Organizations
+            </a>
+            <a href="polls.html" class="nav-item" id="nav-polls"><svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>Active Polls</a>
+            <a href="my-votes.html" class="nav-item" id="nav-votes"><svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>My Votes</a>
+            <span class="nav-section-label admin-only">Admin</span>
+            <a href="admin-polls.html" class="nav-item admin-only active" id="nav-admin-polls"><svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>Manage Polls</a>
+            <a href="admin-users.html" class="nav-item admin-only" id="nav-admin-users"><svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>Manage Users</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info" id="sidebar-user">
+                <div class="user-avatar" id="sidebar-avatar">?</div>
+                <div class="user-meta">
+                    <span class="user-name" id="sidebar-name">Loading…</span>
+                    <span class="user-role" id="sidebar-role"></span>
+                </div>
+            </div>
+            <button class="logout-btn" id="logout-btn"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg></button>
+        </div>
+    </aside>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <button class="mobile-menu-btn" id="mobile-menu-btn"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg></button>
+            <div class="top-bar-title"><h1>Manage Polls</h1></div>
+            <div class="top-bar-actions">
+                <span class="badge-role" id="header-role-badge"></span>
+                <button class="btn-ai-sparkle btn-sm" id="btn-ai-dashboard-open" style="margin-right: 10px;">
+                    <svg class="ai-icon-mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                    <span>AI Generate</span>
+                </button>
+                <button class="btn btn-primary btn-sm" id="btn-open-create-poll">
+                    <svg viewBox="0 0 20 20" fill="currentColor" style="width:16px;height:16px;margin-right:6px"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+                    New Poll
+                </button>
+            </div>
+        </header>
+
+        <div class="page-content">
+            <div class="admin-table-card">
+                <div class="table-header">
+                    <h2 class="table-title">All Polls</h2>
+                    <div class="search-box">
+                        <svg class="search-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+                        <input type="text" id="admin-poll-search" class="search-input" placeholder="Search polls…" />
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table" id="admin-polls-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Options</th>
+                                <th>Audience</th>
+                                <th>Created By</th>
+                                <th>Created At</th>
+                                <th>Status</th>
+                                <th class="actions-col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-polls-tbody">
+                            <tr><td colspan="6" class="table-loading">Loading polls…</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Create / Edit Poll Modal -->
+    <div class="modal-overlay hidden" id="poll-modal-overlay">
+        <div class="modal wide-modal" role="dialog" aria-modal="true" aria-labelledby="poll-modal-title">
+            <div class="modal-header">
+                <div class="modal-header-left">
+                    <h2 class="modal-title" id="poll-modal-title">Create Poll</h2>
+                    <button type="button" class="btn-ai-sparkle" id="btn-ai-open" title="Generate with AI">
+                        <svg class="ai-icon-mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                        <span>AI Generate</span>
+                    </button>
+                </div>
+                <button class="modal-close btn-close-poll"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button>
+            </div>
+            <div class="modal-body">
+                <!-- AI Prompt Section -->
+                <div id="ai-gen-container" class="ai-gen-container hidden">
+                    <div class="ai-gen-box">
+                        <div class="ai-gen-header">
+                            <label for="ai-prompt-input" class="form-label">AI Generation Prompt</label>
+                            <span class="ai-badge">Experimental</span>
+                        </div>
+                        <textarea id="ai-prompt-input" class="form-input ai-textarea" placeholder="What kind of poll would you like to create? (e.g. 'A poll about team lunch preferences for next Friday with 4 popular options')"></textarea>
+                        <div class="ai-gen-actions">
+                            <button type="button" class="btn btn-ghost btn-sm" id="btn-ai-cancel">Cancel</button>
+                            <button type="button" class="btn btn-primary btn-sm btn-ai-sparkle" id="btn-ai-submit">
+                                <span class="btn-text">Magic Generate</span>
+                                <span class="btn-spinner hidden"></span>
+                            </button>
+                        </div>
+                        <div id="ai-gen-error" class="form-error hidden"></div>
+                    </div>
+                </div>
+
+                <form id="poll-form" novalidate>
+                    <input type="hidden" id="edit-poll-id" />
+                    <div class="form-group">
+                        <label for="poll-title" class="form-label">Poll Title <span class="required">*</span></label>
+                        <input type="text" id="poll-title" class="form-input" placeholder="What should we decide?" required />
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="poll-org" class="form-label">Target Organization <span class="required">*</span></label>
+                            <select id="poll-org" class="form-input form-select">
+                                <option value="global">System-wide (Public)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="poll-end-time" class="form-label">End Time <span class="required">*</span></label>
+                            <input type="datetime-local" id="poll-end-time" class="form-input" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="poll-description" class="form-label">Description <span class="optional">(optional)</span></label>
+                        <textarea id="poll-description" class="form-input form-textarea" placeholder="Provide context for voters…" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Options <span class="required">*</span> <span class="optional">(min 2)</span></label>
+                        <div id="options-container">
+                            <div class="option-row"><input type="text" class="form-input option-input" placeholder="Option 1" /><button type="button" class="remove-option-btn hidden">✕</button></div>
+                            <div class="option-row"><input type="text" class="form-input option-input" placeholder="Option 2" /><button type="button" class="remove-option-btn hidden">✕</button></div>
+                        </div>
+                        <button type="button" class="btn btn-ghost btn-sm mt-2" id="btn-add-option">+ Add Option</button>
+                    </div>
+                    <div id="poll-form-error" class="form-error hidden"></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-close-poll">Cancel</button>
+                <button class="btn btn-primary" id="save-poll-btn">
+                    <span class="btn-text">Create Poll</span>
+                    <span class="btn-spinner hidden"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirm Modal -->
+    <div class="modal-overlay hidden" id="delete-modal-overlay">
+        <div class="modal small-modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <h2 class="modal-title">Delete Poll</h2>
+                <button class="modal-close btn-close-delete"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete <strong id="delete-poll-name"></strong>? This will also remove all associated votes and cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-close-delete">Cancel</button>
+                <button class="btn btn-danger" id="confirm-delete-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toast-container"></div>
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/admin-polls.js"></script>
+</body>
+</html>

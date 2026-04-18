@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify Email – PollSphere</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+    <style>
+        .verify-card {
+            text-align: center;
+            padding: 48px 32px;
+        }
+
+        .verify-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 36px;
+        }
+
+        .verify-icon.loading {
+            background: rgba(99, 102, 241, 0.12);
+            animation: pulse 1.5s infinite;
+        }
+
+        .verify-icon.success {
+            background: rgba(34, 197, 94, 0.12);
+        }
+
+        .verify-icon.error {
+            background: rgba(239, 68, 68, 0.12);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .verify-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary, #f1f5f9);
+            margin-bottom: 12px;
+        }
+
+        .verify-message {
+            color: var(--text-secondary, #94a3b8);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .redirect-note {
+            font-size: 0.82rem;
+            color: var(--text-muted, #64748b);
+            margin-top: 16px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(99, 102, 241, 0.2);
+            border-top-color: #6366f1;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="auth-page">
+
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+
+    <div class="auth-container">
+        <div class="auth-card">
+
+            <!-- Brand -->
+            <div class="auth-brand">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="12" fill="url(#lg1)" />
+                        <path d="M19 28 L19 12 L27 12 L27 28 Z" fill="white" />
+                        <path d="M10 28 L10 18 L18 18 L18 28 Z" fill="white" opacity="0.9" />
+                        <path d="M28 28 L28 20 L36 20 L36 28 Z" fill="white" opacity="0.7" />
+                        <defs>
+                            <linearGradient id="lg1" x1="0" y1="0" x2="40" y2="40">
+                                <stop offset="0%" stop-color="#6366f1" />
+                                <stop offset="100%" stop-color="#8b5cf6" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <h1 class="brand-name">PollSphere</h1>
+            </div>
+
+            <!-- Verify Card -->
+            <div class="auth-panel verify-card" id="verify-panel">
+                <!-- Loading state -->
+                <div id="state-loading">
+                    <div class="spinner" style="margin-bottom:24px;"></div>
+                    <p class="verify-message">Verifying your email address…</p>
+                </div>
+
+                <!-- Success state -->
+                <div id="state-success" style="display:none;">
+                    <div class="verify-icon success">✅</div>
+                    <h2 class="verify-title">Email Verified!</h2>
+                    <p class="verify-message">Your account is now active. You can log in and start using PollSphere.</p>
+                    <a href="index.html" class="btn btn-primary"
+                        style="display:inline-block;padding:12px 32px;border-radius:8px;text-decoration:none;">
+                        Go to Login
+                    </a>
+                    <p class="redirect-note" id="redirect-countdown">Redirecting in 3 seconds…</p>
+                </div>
+
+                <!-- Error state -->
+                <div id="state-error" style="display:none;">
+                    <div class="verify-icon error">❌</div>
+                    <h2 class="verify-title">Verification Failed</h2>
+                    <p class="verify-message" id="error-message">The link is invalid or has expired (links expire after
+                        24 hours).</p>
+                    <a href="index.html" class="btn btn-primary"
+                        style="display:inline-block;padding:12px 32px;border-radius:8px;text-decoration:none;">
+                        Back to Login
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/verify.js"></script>
+</body>
+
+</html>

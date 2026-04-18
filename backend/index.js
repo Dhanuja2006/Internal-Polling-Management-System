@@ -13,6 +13,7 @@ import adminRouter from './Routers/adminRouter.js';
 import pollRouter from './Routers/pollRouter.js';
 import voteRouter from './Routers/voteRouter.js';
 import organizationRouter from './Routers/organizationRouter.js';
+import aiRouter from './Routers/aiRouter.js';
 import env from './Config/env.js';
 import { errorHandler, notFoundHandler } from './Middleware/errorMiddleware.js';
 import { requestLogger } from './Middleware/requestMiddleware.js';
@@ -101,6 +102,7 @@ app.use('/api/v1/admin', adminRouter);
 app.use('/api/v1/polls', pollRouter);
 app.use('/api/v1/votes', voteRouter);
 app.use('/api/v1/organizations', organizationRouter);
+app.use('/api/v1/ai', aiRouter);
 
 // Serve static files from the frontend directory
 app.use(express.static(path.join(__dirname, '../frontend')));

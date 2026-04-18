@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Users – PollSphere Admin</title>
+    <meta name="description" content="Create and manage users in the Internal Polling Management System." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon small">
+                <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="url(#lg6)"/><path d="M10 28 L10 18 L18 18 L18 28 Z" fill="white" opacity="0.9"/><path d="M19 28 L19 12 L27 12 L27 28 Z" fill="white"/><path d="M28 28 L28 20 L36 20 L36 28 Z" fill="white" opacity="0.7"/><defs><linearGradient id="lg6" x1="0" y1="0" x2="40" y2="40"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs></svg>
+            </div>
+            <span class="sidebar-brand-text">PollSphere</span>
+        </div>
+        <nav class="sidebar-nav">
+            <span class="nav-section-label">Main</span>
+            <a href="dashboard.html" class="nav-item" id="nav-dashboard"><svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>Dashboard</a>
+            <a href="organizations.html" class="nav-item" id="nav-orgs">
+                <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/></svg>
+                Organizations
+            </a>
+            <a href="polls.html" class="nav-item" id="nav-polls"><svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>Active Polls</a>
+            <a href="my-votes.html" class="nav-item" id="nav-votes"><svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>My Votes</a>
+            <span class="nav-section-label admin-only">Admin</span>
+            <a href="admin-polls.html" class="nav-item admin-only" id="nav-admin-polls"><svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>Manage Polls</a>
+            <a href="admin-users.html" class="nav-item admin-only active" id="nav-admin-users"><svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>Manage Users</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info" id="sidebar-user">
+                <div class="user-avatar" id="sidebar-avatar">?</div>
+                <div class="user-meta">
+                    <span class="user-name" id="sidebar-name">Loading…</span>
+                    <span class="user-role" id="sidebar-role"></span>
+                </div>
+            </div>
+            <button class="logout-btn" id="logout-btn"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg></button>
+        </div>
+    </aside>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <button class="mobile-menu-btn" id="mobile-menu-btn"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg></button>
+            <div class="top-bar-title"><h1>Manage Users</h1></div>
+            <div class="top-bar-actions">
+                <span class="badge-role" id="header-role-badge"></span>
+            <div class="top-bar-actions">
+                <span class="badge-role" id="header-role-badge"></span>
+                <button class="btn btn-primary btn-sm" id="btn-open-create-user">
+                    <svg viewBox="0 0 20 20" fill="currentColor" style="width:16px;height:16px;margin-right:6px"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+                    Add User
+                </button>
+            </div>
+            </div>
+        </header>
+
+        <div class="page-content">
+            <!-- Users Tab -->
+            <div class="admin-tabs">
+                <button class="admin-tab active" id="tab-users-list" data-tab="users">Regular Users</button>
+                <button class="admin-tab" id="tab-admins-list" data-tab="admins">Admins</button>
+            </div>
+
+            <div class="admin-table-card">
+                <div class="table-header">
+                    <h2 class="table-title" id="user-table-title">All Users</h2>
+                    <div class="search-box">
+                        <svg class="search-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+                        <input type="text" id="user-search" class="search-input" placeholder="Search users…" />
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table" id="users-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th class="actions-col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-tbody">
+                            <tr><td colspan="6" class="table-loading">Loading users…</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Create User Modal -->
+    <div class="modal-overlay hidden" id="create-user-modal-overlay">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="create-user-title">
+            <div class="modal-header">
+                <h2 class="modal-title" id="create-user-title">Add New User</h2>
+                <button class="modal-close btn-close-create-user"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button>
+            </div>
+            <div class="modal-body">
+                <form id="create-user-form" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cu-name" class="form-label">Full Name <span class="required">*</span></label>
+                            <input type="text" id="cu-name" class="form-input" placeholder="Jane Doe" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="cu-phone" class="form-label">Phone <span class="optional">(optional)</span></label>
+                            <input type="tel" id="cu-phone" class="form-input" placeholder="+1 555 000 0000" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cu-email" class="form-label">Email Address <span class="required">*</span></label>
+                        <input type="email" id="cu-email" class="form-input" placeholder="jane@company.com" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="cu-role" class="form-label">Role</label>
+                        <select id="cu-role" class="form-input form-select">
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <p class="form-hint">An invitation email will be sent to the user with a link to set up their account.</p>
+                    <div id="create-user-error" class="form-error hidden"></div>
+                    <div id="create-user-success" class="form-success hidden"></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-close-create-user">Cancel</button>
+                <button class="btn btn-primary" id="btn-submit-create-user">
+                    <span class="btn-text">Send Invitation</span>
+                    <span class="btn-spinner hidden"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete User Confirm -->
+    <div class="modal-overlay hidden" id="delete-user-modal-overlay">
+        <div class="modal small-modal" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <h2 class="modal-title">Delete User</h2>
+                <button class="modal-close btn-close-delete-user"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to permanently delete <strong id="delete-user-name"></strong>? This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-close-delete-user">Cancel</button>
+                <button class="btn btn-danger" id="btn-confirm-delete-user">Delete User</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toast-container"></div>
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/admin-users.js"></script>
+</body>
+</html>
